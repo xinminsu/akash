@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 import 'dotenv/config'
 
 const client = new OpenAI({
-  apiKey: process.env.API_KEY, // This is the default and can be omitted
+  apiKey: process.env.API_KEY,
   baseURL: "https://chatapi.akash.network/api/v1"
 });
 

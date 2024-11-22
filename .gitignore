@@ -5,6 +5,7 @@
 /.next/
 /out/
 
+/needmore
 
 # production
 /build

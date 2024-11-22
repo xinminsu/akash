@@ -1,10 +1,16 @@
 {
-  "type": "module",
+  "name": "akashts",
+  "version": "0.0.1",
+  "description": "",
   "scripts": {
-    "start": "node akash.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "openai": "^4.72.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }

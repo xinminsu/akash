@@ -11,6 +11,7 @@
 import fetch from 'node-fetch';
 import { ChatCompletionStream } from 'openai/lib/ChatCompletionStream';
 
+
 fetch('http://localhost:3000', {
   method: 'POST',
   body: 'Tell me why dogs are better than cats',

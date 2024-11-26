@@ -1,5 +1,7 @@
 import OpenAI from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import {  BASEURL } from './model';
+import modelName from './program';
 
 // This file demonstrates how to stream from a Next.JS server as
 // a new-line separated JSON-encoded stream. This file cannot be run
@@ -25,11 +27,11 @@ export const runtime = 'edge';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const openai = new OpenAI({
     apiKey: process.env.API_KEY,
-    baseURL: "https://chatapi.akash.network/api/v1"
+    baseURL: BASEURL
   });
 
   const stream = openai.beta.chat.completions.stream({
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     stream: true,
     // @ts-ignore
     messages: [{ role: 'user', content: await req.text() }],

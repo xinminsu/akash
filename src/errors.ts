@@ -2,18 +2,20 @@
 
 import OpenAI, { NotFoundError } from 'openai';
 import 'dotenv/config'
+import {  BASEURL } from './model';
+import modelName from './program';
 
 // gets API Key from environment variable OPENAI_API_KEY
 const client = new OpenAI({
   apiKey: process.env.API_KEY,
-  baseURL: "https://chatapi.akash.network/api/v1"
+  baseURL: BASEURL
 });
 
 async function main() {
   try {
     await client.completions.create({
       prompt: 'Say this is a test',
-      model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+      model: modelName,
     });
   } catch (err) {
     if (err instanceof NotFoundError) {

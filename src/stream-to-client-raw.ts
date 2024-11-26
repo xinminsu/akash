@@ -5,11 +5,13 @@
 
 import OpenAI from 'openai';
 import express, { Request, Response } from 'express';
+import { BASEURL } from './model';
 import 'dotenv/config'
+import modelName from './program';
 
 const openai = new OpenAI({
   apiKey: process.env.API_KEY,
-  baseURL: "https://chatapi.akash.network/api/v1"
+  baseURL: BASEURL
 });
 const app = express();
 
@@ -37,7 +39,7 @@ app.post('/', async (req: Request, res: Response) => {
     console.log('Received request:', req.body);
 
     const stream = await openai.chat.completions.create({
-      model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+      model: modelName,
       stream: true,
       messages: [{ role: 'user', content: req.body }],
     });

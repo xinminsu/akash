@@ -1,17 +1,20 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import OpenAI from 'openai';
+import { BASEURL } from './model';
 import 'dotenv/config'
+import modelName from './program';
+
 // gets API Key from environment variable OPENAI_API_KEY
 const openai = new OpenAI({
   apiKey: process.env.API_KEY,
-  baseURL: "https://chatapi.akash.network/api/v1"
+  baseURL: BASEURL
 });
 
 async function main() {
   // Explicit non streaming params type:
   const params: OpenAI.Chat.CompletionCreateParams = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user', content: 'Say this is a test!' }],
   };
   const completion = await openai.chat.completions.create(params);

@@ -1,17 +1,19 @@
 #!/usr/bin/env -S npm run tsn -T
 
 import OpenAI from 'openai';
+import { BASEURL } from './model';
 import 'dotenv/config'
+import modelName from './program';
 
 const openai = new OpenAI({
   apiKey: process.env.API_KEY,
-  baseURL: "https://chatapi.akash.network/api/v1"
+  baseURL: BASEURL
 });
 
 async function main() {
   const runner = openai.beta.chat.completions
     .stream({
-      model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+      model: modelName,
       messages: [{ role: 'user', content: 'Say this is a test' }],
     })
     .on('message', (msg) => console.log(msg))

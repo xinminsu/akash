@@ -9,6 +9,7 @@
   "author": "xinmin.su@hotmail.com",
   "license": "ISC",
   "dependencies": {
+    "commander": "^12.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "node-fetch": "^3.3.2",

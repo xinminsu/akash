@@ -3,18 +3,21 @@
 import OpenAI from 'openai';
 import { Stream } from 'openai/streaming';
 import 'dotenv/config'
+import {  BASEURL } from './model';
+import modelName from './program';
 
 // gets API Key from environment variable OPENAI_API_KEY
 const openai = new OpenAI({
   apiKey: process.env.API_KEY,
-  baseURL: "https://chatapi.akash.network/api/v1"
+  baseURL: BASEURL
 });
 
 async function main() {
+
   // ---------------- Explicit non-streaming params ------------
 
   const params: OpenAI.Chat.ChatCompletionCreateParams = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user', content: 'Say this is a test!' }],
   };
   const completion = await openai.chat.completions.create(params);
@@ -23,7 +26,7 @@ async function main() {
   // ---------------- Explicit streaming params ----------------
 
   const streamingParams: OpenAI.Chat.ChatCompletionCreateParams = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user', content: 'Say this is a test!' }],
     stream: true,
   };
@@ -37,12 +40,12 @@ async function main() {
   // ---------------- Explicit (non)streaming types ----------------
 
   const params1: OpenAI.Chat.ChatCompletionCreateParamsNonStreaming = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user', content: 'Say this is a test!' }],
   };
 
   const params2: OpenAI.Chat.ChatCompletionCreateParamsStreaming = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user', content: 'Say this is a test!' }],
     stream: true,
   };
@@ -55,7 +58,7 @@ async function main() {
   // If you didn't include it then you'd also get an error saying that
   // `role: string` is not assignable.
   const streamingParams2 = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user' as const, content: 'Say this is a test!' }],
     stream: true as const,
   };
@@ -69,7 +72,7 @@ async function main() {
   console.log("3-------------")
   // Without the `as const` for `stream`.
   const streamingParams3 = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user' as const, content: 'Say this is a test!' }],
     stream: true,
   };
@@ -108,7 +111,7 @@ export async function createCompletionParams(
   stream: boolean,
 ): Promise<OpenAI.Chat.ChatCompletionCreateParams> {
   const params = {
-    model: 'Meta-Llama-3-1-8B-Instruct-FP8',
+    model: modelName,
     messages: [{ role: 'user' as const, content: 'Hello!' }],
     stream: stream,
   };

@@ -1,8 +1,8 @@
-# **`akashts`**
+# **`akash-api-test`**
 
 ## **Description 🚀**
 
-**`akashts`** is a collection of simple examples demonstrating akash api functions.
+**`akash-api-test`** is a collection of simple examples demonstrating akash api functions.
 
 ## **Getting Started 🏁**
 

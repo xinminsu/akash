@@ -11,7 +11,7 @@ const client = new OpenAI({
 async function main() {
 
   const chatCompletion = await client.chat.completions.create({
-    messages: [{ role: 'user', content: 'Who are you?' }],
+    messages: [{ role: 'user', content: 'Generate a todo list app?' }],
     model: modelName,
   });
 
